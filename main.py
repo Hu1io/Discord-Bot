@@ -1,5 +1,5 @@
 import discord
-from rss import RssAggregator
+from rss import GetArticle
 
 
 class MyClient(discord.Client):
@@ -17,14 +17,17 @@ class MyClient(discord.Client):
             print("Response: pong\n")
             await message.channel.send('pong')
 
-    async def on_refresh(self, message):
+        if message.content == 'test':
+            print('----New RSS Feed----')
+            await message.channel.send(GetArticle())
+
+    async def on_message(self, message):
         # don't respond to ourselves
         if message.author == self.user:
             return
         if message.content == 'test':
             print('----New RSS Feed----')
-            await message.channel.send(RssAggregator("https://www.theguardian.com/world/coronavirus-outbreak/rss").completeRssFeed)
+            await message.channel.send(GetArticle())
 
 client = MyClient()
 client.run('TOKEN')
-

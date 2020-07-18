@@ -26,5 +26,5 @@ class MyClient(discord.Client):
             await message.channel.send(RssAggregator("https://www.theguardian.com/world/coronavirus-outbreak/rss").completeRssFeed)
 
 client = MyClient()
-client.run('NzMzOTIwNDgwNTI4MTcxMDM4.XxKLQA.AbnfV8LK8TlLUBcxMcWtWw3XOOE')
+client.run('TOKEN')
 

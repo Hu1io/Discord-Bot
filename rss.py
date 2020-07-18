@@ -13,8 +13,8 @@ def GetArticle():
     text = soup.get_text()
 
     print('Post Title :', entry.title, '\n----------\n', text, '\n----News Link----\n', entry.link)
-    # completeRssFeed = ['Post Title :', entry.title, '\n----------\n', text, '\n----News Link----\n', entry.link]
 
-    FinRssFeed = entry.title + "\n\n" + text + '\n\n----News Link----\n' + entry.link
+    FinRssFeed = "**__" + entry.title + "__**\n\n" + text + '\n\n----News Link----\n' + entry.link
+
 
     return FinRssFeed

@@ -1,33 +1,31 @@
 import discord
-from rss import GetArticle
+import time
+import rss
+# from rss import GetArticle
+from importlib import reload
 
 
 class MyClient(discord.Client):
     async def on_ready(self):
         print('Logged on as', self.user)
+        while True:
+            channel = client.get_channel(733984881947967489)
+            await channel.send(rss.GetArticle())
+            reload(rss)
+            time.sleep(3600)
 
-#     async def on_message(self, message):
-#         # don't respond to ourselves
-#         if message.author == self.user:
-#             return
-#
-#         if message.content == 'ping':
-#             print("----Ping Detected----")
-#             print(message.author, ': ', message.content)
-#             print("Response: pong\n")
-#             await message.channel.send('pong')
-#
-#         if message.content == 'test':
-#             print('----New RSS Feed----')
-#             await message.channel.send(GetArticle())
 
     async def on_message(self, message):
         # don't respond to ourselves
         if message.author == self.user:
             return
-        if message.content == 'test':
-            print('----New RSS Feed----')
-            await message.channel.send(GetArticle())
+
+        if message.content == 'ping':
+            print("----Ping Detected----")
+            print(message.author, ': ', message.content)
+            print("Response: pong\n")
+            await message.channel.send('pong')
+
 
 client = MyClient()
 client.run('TOKEN')
